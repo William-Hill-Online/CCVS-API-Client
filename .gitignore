@@ -1,0 +1,8 @@
+*.pyc
+*.code-workspace
+dist/
+*.egg-info/
+
+*.vscode
+
+.coverage
