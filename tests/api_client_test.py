@@ -79,7 +79,6 @@ class TestApiClient(unittest.TestCase):
         vendor = {
             'id': 1,
             'name': 'name123',
-            'url': 'http://localhost',
             'credentials': {'config': {}}
         }
         vendor_obj = Vendor(**vendor)

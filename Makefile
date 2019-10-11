@@ -20,4 +20,5 @@ publish: clean dist ## Make publish
 	twine upload dist/*
 
 test: ## Run tests
-	coverage run -m unittest discover
+	nosetests --verbose --rednose  --nocapture --cover-package=ccvs_scanning_api_client --with-coverage
+	coverage report -m

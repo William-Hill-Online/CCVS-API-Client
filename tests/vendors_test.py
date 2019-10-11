@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
 
-import ccvs_scanning_api_client
+from ccvs_scanning_api_client.api import vendors_api
 
 
 class TestVendorsAPI(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestVendorsAPI(unittest.TestCase):
     def setUp(self):
         self.mock = MagicMock()
         self.mock.make_request.return_value = 'Mock'
-        self.api = ccvs_scanning_api_client.api.vendors_api.VendorsApi(
+        self.api = vendors_api.VendorsApi(
             self.mock)
 
     def tearDown(self):
