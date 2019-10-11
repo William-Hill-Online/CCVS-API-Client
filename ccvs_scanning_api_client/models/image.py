@@ -103,3 +103,9 @@ class Image(object):
             return False
 
         return self.__dict__ == other.__dict__
+
+    @property
+    def __dict__(self):
+        """Returns a custom dict."""
+
+        return self.to_dict()
