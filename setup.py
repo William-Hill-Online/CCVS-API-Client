@@ -8,8 +8,7 @@ NAME = 'ccvs-api-client'
 VERSION = '0.0.1.dev4'
 
 REQUIRES = [
-    'requests==2.20.0',
-    'Click==7.0',
+    'click==7.0',
     'six==1.12.0',
 ]
 
@@ -17,8 +16,9 @@ setup(
     name=NAME,
     version=VERSION,
     description='CCVS API Client',
-    author_email='',
-    url='',
+    author='Ederson Brilhante',
+    author_email='ederson.brilhante@grandparade.co.uk',
+    url='https://github.com/William-Hill-Online/CCVS-API-Client',
     keywords=['CCVS API'],
     install_requires=REQUIRES,
     packages=find_packages(),
