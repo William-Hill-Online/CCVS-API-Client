@@ -6,13 +6,18 @@ import six
 
 class Vendor(object):
 
+    swagger_types = {
+        'id': 'str',
+        'name': 'str',
+        'credentials': 'dict'
+    }
+
     def __init__(self, id=None, name=None, credentials=None):
 
         self._id = None
         self._name = None
 
         self._credentials = None
-        self.discriminator = None
 
         if id is not None:
             self.id = id
