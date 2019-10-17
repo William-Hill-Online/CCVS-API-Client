@@ -8,7 +8,6 @@ NAME = 'ccvs-api-client'
 VERSION = '0.0.1.dev4'
 
 REQUIRES = [
-    'click==7.0',
     'six==1.12.0',
 ]
 
