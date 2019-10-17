@@ -5,7 +5,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 NAME = 'ccvs-api-client'
-VERSION = '0.0.1.dev4'
+VERSION = '0.0.1'
 
 REQUIRES = [
     'six==1.12.0',
