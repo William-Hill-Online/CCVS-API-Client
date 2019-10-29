@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 pylint = "==2.2.2"
 pre-commit = "==1.14.4"
-coverage = "==4.5.2"
+coverage = "==4.5.4"
 pycodestyle = "==2.5.0"
 ipdb = "==0.11"
 mock = "==2.0.0"
