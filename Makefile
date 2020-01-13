@@ -21,4 +21,3 @@ publish: clean dist ## Make publish
 
 test: ## Run tests
 	nosetests --verbose --rednose  --nocapture --cover-package=ccvs_scanning_api_client --with-coverage
-	coverage report -m
