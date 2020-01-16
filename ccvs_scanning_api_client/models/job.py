@@ -15,7 +15,6 @@ import six
 class Job(object):
     swagger_types = {
         'id': 'str',
-        'type': 'str',
         'status': 'str',
         'created_at': 'datetime',
         'updated_at': 'datetime',
@@ -25,7 +24,6 @@ class Job(object):
 
     attribute_map = {
         'id': 'id',
-        'type': 'type',
         'status': 'status',
         'created_at': 'created_at',
         'updated_at': 'updated_at',
@@ -33,11 +31,10 @@ class Job(object):
         'result': 'result'
     }
 
-    def __init__(self, id=None, type=None, status=None, created_at=None, updated_at=None, data=None, result=None):  # noqa: E501
+    def __init__(self, id=None, status=None, created_at=None, updated_at=None, data=None, result=None):  # noqa: E501
         """Job - a model defined in Swagger"""  # noqa: E501
 
         self._id = None
-        self._type = None
         self._status = None
         self._created_at = None
         self._updated_at = None
@@ -78,35 +75,6 @@ class Job(object):
         """
 
         self._id = id
-
-    @property
-    def type(self):
-        """
-        Gets the type of this Job.
-
-        :return: The type of this Job.
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """
-        Sets the type of this Job.
-
-        :param type: The type of this Job.
-        :type: str
-        """
-        if type is None:
-            raise ValueError('Invalid value for `type`, must not be `None`')
-        allowed_values = ['scan_image']
-        if type not in allowed_values:
-            raise ValueError(
-                'Invalid value for `type` ({0}), must be one of {1}'
-                .format(type, allowed_values)
-            )
-
-        self._type = type
 
     @property
     def status(self):
