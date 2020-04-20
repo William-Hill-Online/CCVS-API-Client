@@ -34,8 +34,7 @@ class ApiClient(object):
         request_url = f'{self.config.host}/{path}'
 
         headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {self.config.token}'
+            'Content-Type': 'application/json'
         }
 
         if data:

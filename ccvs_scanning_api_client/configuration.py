@@ -5,6 +5,5 @@
 
 class Configuration(object):
 
-    def __init__(self, host, token):
+    def __init__(self, host):
         self.host = host
-        self.token = token

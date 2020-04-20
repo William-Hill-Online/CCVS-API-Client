@@ -12,14 +12,16 @@ import re  # noqa: F401
 import six
 
 
-class Job(object):
+class Analysis(object):
     swagger_types = {
         'id': 'str',
         'status': 'str',
         'created_at': 'datetime',
         'updated_at': 'datetime',
-        'data': 'object',
-        'result': 'object'
+        'image': 'str',
+        'result': 'str',
+        'vendors': 'object',
+        'vulnerabilities': 'object'
     }
 
     attribute_map = {
@@ -27,20 +29,24 @@ class Job(object):
         'status': 'status',
         'created_at': 'created_at',
         'updated_at': 'updated_at',
-        'data': 'data',
-        'result': 'result'
+        'image': 'image',
+        'result': 'result',
+        'vendors': 'vendors',
+        'vulnerabilities': 'vulnerabilities'
     }
 
-    def __init__(self, id=None, status=None, created_at=None, updated_at=None, data=None, result=None):  # noqa: E501
-        """Job - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, id=None, status=None, created_at=None, updated_at=None,
+                 image=None, result=None, vendors=None, vulnerabilities=None):
+        """Analysis - a model defined in Swagger"""
 
         self._id = None
         self._status = None
         self._created_at = None
         self._updated_at = None
-        self._data = None
+        self._image = None
         self._result = None
-        self.discriminator = None
+        self._vendors = None
+        self._vulnerabilities = None
 
         if id is not None:
             self.id = id
@@ -51,16 +57,20 @@ class Job(object):
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
-        self.data = data
+        self.image = image
         if result is not None:
             self.result = result
+        if vendors is not None:
+            self.vendors = vendors
+        if vulnerabilities is not None:
+            self.vulnerabilities = vulnerabilities
 
     @property
     def id(self):
         """
-        Gets the id of this Job.
+        Gets the id of this Analysis.
 
-        :return: The id of this Job.
+        :return: The id of this Analysis.
         :rtype: str
         """
         return self._id
@@ -68,9 +78,9 @@ class Job(object):
     @id.setter
     def id(self, id):
         """
-        Sets the id of this Job.
+        Sets the id of this Analysis.
 
-        :param id: The id of this Job.
+        :param id: The id of this Analysis.
         :type: str
         """
 
@@ -79,9 +89,9 @@ class Job(object):
     @property
     def status(self):
         """
-        Gets the status of this Job.
+        Gets the status of this Analysis.
 
-        :return: The status of this Job.
+        :return: The status of this Analysis.
         :rtype: str
         """
         return self._status
@@ -89,9 +99,9 @@ class Job(object):
     @status.setter
     def status(self, status):
         """
-        Gets the status of this Job.
+        Gets the status of this Analysis.
 
-        :return: The status of this Job.
+        :return: The status of this Analysis.
         :rtype: str
         """
         allowed_values = ['pending', 'started', 'finished', 'failed']
@@ -106,9 +116,9 @@ class Job(object):
     @property
     def created_at(self):
         """
-        Gets the created_at of this Job.
+        Gets the created_at of this Analysis.
 
-        :return: The created_at of this Job.
+        :return: The created_at of this Analysis.
         :rtype: str
         """
         return self._created_at
@@ -116,9 +126,9 @@ class Job(object):
     @created_at.setter
     def created_at(self, created_at):
         """
-        Gets the created_at of this Job.
+        Gets the created_at of this Analysis.
 
-        :return: The created_at of this Job.
+        :return: The created_at of this Analysis.
         :rtype: str
         """
         self._created_at = created_at
@@ -126,9 +136,9 @@ class Job(object):
     @property
     def updated_at(self):
         """
-        Gets the updated_at of this Job.
+        Gets the updated_at of this Analysis.
 
-        :return: The updated_at of this Job.
+        :return: The updated_at of this Analysis.
         :rtype: str
         """
         return self._updated_at
@@ -136,43 +146,43 @@ class Job(object):
     @updated_at.setter
     def updated_at(self, updated_at):
         """
-        Gets the updated_at of this Job.
+        Gets the updated_at of this Analysis.
 
-        :return: The updated_at of this Job.
+        :return: The updated_at of this Analysis.
         :rtype: str
         """
 
         self._updated_at = updated_at
 
     @property
-    def data(self):
+    def image(self):
         """
-        Gets the data of this Job.
+        Gets the image of this Analysis.
 
-        :return: The data of this Job.
+        :return: The image of this Analysis.
         :rtype: str
         """
-        return self._data
+        return self._image
 
-    @data.setter
-    def data(self, data):
+    @image.setter
+    def image(self, image):
         """
-        Gets the data of this Job.
+        Gets the image of this Analysis.
 
-        :return: The data of this Job.
+        :return: The image of this Analysis.
         :rtype: str
         """
-        if data is None:
-            raise ValueError('Invalid value for `data`, must not be `None`')
+        if image is None:
+            raise ValueError('Invalid value for `image`, must not be `None`')
 
-        self._data = data
+        self._image = image
 
     @property
     def result(self):
         """
-        Gets the result of this Job.
+        Gets the result of this Analysis.
 
-        :return: The result of this Job.
+        :return: The result of this Analysis.
         :rtype: str
         """
         return self._result
@@ -180,13 +190,55 @@ class Job(object):
     @result.setter
     def result(self, result):
         """
-        Gets the result of this Job.
+        Gets the result of this Analysis.
 
-        :return: The result of this Job.
+        :return: The result of this Analysis.
         :rtype: str
         """
 
         self._result = result
+
+    @property
+    def vendors(self):
+        """
+        Gets the vendors of this Analysis.
+
+        :return: The vendors of this Analysis.
+        :rtype: object
+        """
+        return self._vendors
+
+    @vendors.setter
+    def vendors(self, vendors):
+        """
+        Gets the vendors of this Analysis.
+
+        :return: The vendors of this Analysis.
+        :rtype: object
+        """
+
+        self._vendors = vendors
+
+    @property
+    def vulnerabilities(self):
+        """
+        Gets the vulnerabilities of this Analysis.
+
+        :return: The vulnerabilities of this Analysis.
+        :rtype: object
+        """
+        return self._vulnerabilities
+
+    @vulnerabilities.setter
+    def vulnerabilities(self, vulnerabilities):
+        """
+        Gets the vulnerabilities of this Analysis.
+
+        :return: The vulnerabilities of this Analysis.
+        :rtype: object
+        """
+
+        self._vulnerabilities = vulnerabilities
 
     def to_dict(self):
         """Returns the model properties as a dict."""
@@ -209,7 +261,7 @@ class Job(object):
                 ))
             else:
                 result[attr] = value
-        if issubclass(Job, dict):
+        if issubclass(Analysis, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -217,7 +269,7 @@ class Job(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal."""
-        if not isinstance(other, Job):
+        if not isinstance(other, Analysis):
             return False
 
         return self.__dict__ == other.__dict__
