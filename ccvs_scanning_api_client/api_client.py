@@ -31,7 +31,7 @@ class ApiClient(object):
             data=None, response_type=None):
 
         path = path if path[-1] == '/' else path + '/'
-        request_url = f'{self.config.host}/{path}'
+        request_url = f'{self.config.host}{path}'
 
         headers = {
             'Content-Type': 'application/json'
