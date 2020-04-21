@@ -9,11 +9,12 @@ from ccvs_scanning_api_client.api_client import ApiClient
 from ccvs_scanning_api_client.configuration import Configuration
 from ccvs_scanning_api_client.models.analysis import Analysis
 
-CCVS_API = os.environ.get('CCVS_API')
+
+config = Configuration(host=os.environ.get('CCVS_API'))
 
 
 def analysis(image_name):
-    analysis_api = AnalysisApi(ApiClient(Configuration(host=CCVS_API)))
+    analysis_api = AnalysisApi(ApiClient(config))
     analysis_obj = analysis_api.analysis_create(Analysis(image=image_name))
     x = 0
     while True:
@@ -31,9 +32,10 @@ def analysis(image_name):
 
 def resume(analysis_result):
     vulns = analysis_result.vulnerabilities.values()
+    link = f'{config.host}container-scanning/analysis/{analysis_result.id}'
     resume = {
         'image': analysis_result.image,
-        'link': f'{CCVS_API}container-scanning/analysis/{analysis_result.id}',
+        'link': link,
         'result': analysis_result.result,
         'total_vulns': {
             'high_vulns': 0,
