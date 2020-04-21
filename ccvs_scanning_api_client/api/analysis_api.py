@@ -3,16 +3,16 @@ class AnalysisApi(object):
     def __init__(self, api_client):
         self.api_client = api_client
 
-    def analysis_create(self, image, **kwargs):
+    def analysis_create(self, data, **kwargs):
         """
         analysis_create.
 
-        :param analysis image: (required)
+        :param analysis data: (required)
         :return: analysis
         """
         path = f'container-scanning/analysis/'
         return self.api_client.make_request(
-            'POST', path=path, image=image, response_type='Analysis')
+            'POST', path=path, data=data, response_type='Analysis')
 
     def analysis_read(self, analysis_id,  **kwargs):
         """
