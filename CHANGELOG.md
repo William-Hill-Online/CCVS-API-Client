@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [1.1.0] - 2020-04-21
+
+### Added
+
+- Add functionality to save result into a json file
+
 ## [1.0.0] - 2020-04-21
 
 ### Added
@@ -14,5 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add analysis support
 - Add console script to scan images
 
-[unreleased]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/william-Hill-Online/CCVS-API-Client/releases/tag/v1.0.0
