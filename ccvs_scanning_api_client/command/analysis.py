@@ -24,7 +24,7 @@ def analysis(image_name):
             x += 1
             sleep(5)
         else:
-            print('Image Analysed')  # noqa
+            print('Image Analyzed')  # noqa
             break
     return analysis_result
 

@@ -5,7 +5,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 NAME = 'ccvs-api-client'
-VERSION = '1.0.0'
+VERSION = '1.1.0'
 
 REQUIRES = [
     'requests==2.22.0',
@@ -25,7 +25,7 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'ccvs-api-scanner=ccvs_scanning_api_client.run:main'],
+            'ccvs-api-scanner=ccvs_scanning_api_client.command.run:main'],
     },
     long_description="""\
         Client for Central Container Vulnerability Scanning API
