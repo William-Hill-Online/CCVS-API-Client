@@ -6,4 +6,5 @@
 class Configuration(object):
 
     def __init__(self, host):
+        host = host if host[-1] == '/' else host + '/'
         self.host = host
