@@ -11,7 +11,7 @@ class TestApiClient(unittest.TestCase):
     """ApiClient unit test stubs."""
 
     def setUp(self):
-        config = Configuration(host='http://localhost', token='token123')
+        config = Configuration(host='http://localhost')
         self.api = ApiClient(config)
 
     def tearDown(self):
@@ -35,8 +35,7 @@ class TestApiClient(unittest.TestCase):
             'GET',
             'http://localhost/container-scanning/vendors/',
             data=None,
-            headers={'Content-Type': 'application/json',
-                     'Authorization': 'Bearer token123'},
+            headers={'Content-Type': 'application/json'},
             params=None
         )
 
