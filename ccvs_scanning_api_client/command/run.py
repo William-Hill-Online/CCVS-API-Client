@@ -3,7 +3,6 @@
 # license that can be found in the LICENSE file.
 import argparse
 import json
-from pprint import pprint
 
 from ccvs_scanning_api_client.command import analysis
 
@@ -13,15 +12,32 @@ def main():
         description='Find vulnabilities in docker images.')
 
     parser.add_argument(
-        '--imagetag',
+        '-i', '--imagetag',
         help='docker image: docker-registry.exemple.com/image:tag',
         dest='image_tag',
         required=True)
+    parser.add_argument(
+        '-o', '--output',
+        help='file name to save results',
+        dest='output',
+        required=False)
 
     image_tag = parser.parse_args().image_tag
+    output_file = parser.parse_args().output
+
     analysis_result = analysis.analysis(image_tag)
     results = analysis.resume(analysis_result)
-    pprint(json.dumps(results))  # noqa
+
+    if output_file:
+        save_json(results)
+    else:
+        print(json.dumps(results))  # noqa
+
+
+def save_json(results):
+    analysis_result_file = open('output.json', 'w')
+    analysis_result_file.write(json.dumps(results))
+    analysis_result_file.close()
 
 
 if __name__ == '__main__':

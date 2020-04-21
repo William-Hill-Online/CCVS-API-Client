@@ -25,7 +25,7 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'ccvs-api-scanner=ccvs_scanning_api_client.run:main'],
+            'ccvs-api-scanner=ccvs_scanning_api_client.command.run:main'],
     },
     long_description="""\
         Client for Central Container Vulnerability Scanning API
