@@ -19,6 +19,7 @@ def analysis(image_name):
     x = 0
     while True:
         analysis_result = analysis_api.analysis_read(analysis_obj.id)
+        print('Analysis: ', analysis_obj.id)  # noqa
         if analysis_result.result == 'pending':
             b = 'Analysing image' + '.' * x
             print(b, end='\r')  # noqa
@@ -31,7 +32,6 @@ def analysis(image_name):
 
 
 def resume(analysis_result):
-    vulns = analysis_result.vulnerabilities.values()
     link = f'{config.host}container-scanning/analysis/{analysis_result.id}'
     resume = {
         'image': analysis_result.image,
@@ -47,8 +47,11 @@ def resume(analysis_result):
         }
     }
 
-    for vuln in vulns:
-        for level in vuln.items():
-            resume['total_vulns'][level[0]] += len(level[1])
+    vulns = analysis_result.vulnerabilities
+    if vulns:
+        for vuln in vulns.values():
+            if vuln:
+                for level in vuln.items():
+                    resume['total_vulns'][level[0]] += len(level[1])
 
     return resume
