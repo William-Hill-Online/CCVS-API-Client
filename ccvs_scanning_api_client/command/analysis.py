@@ -17,9 +17,9 @@ def analysis(image_name):
     analysis_api = AnalysisApi(ApiClient(config))
     analysis_obj = analysis_api.analysis_create(Analysis(image=image_name))
     x = 0
+    print('Analysis: ', analysis_obj.id)  # noqa
     while True:
         analysis_result = analysis_api.analysis_read(analysis_obj.id)
-        print('Analysis: ', analysis_obj.id)  # noqa
         if analysis_result.result == 'pending':
             b = 'Analysing image' + '.' * x
             print(b, end='\r')  # noqa
