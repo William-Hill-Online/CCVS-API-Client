@@ -29,13 +29,13 @@ def main():
     results = analysis.resume(analysis_result)
 
     if output_file:
-        save_json(results)
+        save_json(results, output_file)
     else:
         print(json.dumps(results))  # noqa
 
 
-def save_json(results):
-    analysis_result_file = open('output.json', 'w')
+def save_json(results, output_file):
+    analysis_result_file = open(output_file, 'w')
     analysis_result_file.write(json.dumps(results))
     analysis_result_file.close()
 

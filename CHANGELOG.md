@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [1.1.4] - 2020-04-22
+
+### Fixed
+
+- Remove harded code output.json
+- Check if vulns are null before iteration
+
 ## [1.1.3] - 2020-04-21
 
 ### Fixed
@@ -38,7 +45,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add analysis support
 - Add console script to scan images
 
-[unreleased]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.1.3...HEAD
+[unreleased]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.1.4...HEAD
+[1.1.4]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/william-Hill-Online/CCVS-API-Client/compare/v1.1.0...v1.1.1
