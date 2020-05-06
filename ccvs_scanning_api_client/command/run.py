@@ -12,21 +12,27 @@ def main():
         description='Find vulnabilities in docker images.')
 
     parser.add_argument(
-        '-i', '--imagetag',
+        '-i', '--image_tag',
         help='docker image: docker-registry.exemple.com/image:tag',
         dest='image_tag',
         required=True)
     parser.add_argument(
+        '-w', '--whitelist',
+        help='yaml file with whitelist',
+        dest='whitelist_file',
+        required=False)
+    parser.add_argument(
         '-o', '--output',
         help='file name to save results',
-        dest='output',
+        dest='output_file',
         required=False)
 
     image_tag = parser.parse_args().image_tag
-    output_file = parser.parse_args().output
+    output_file = parser.parse_args().output_file
+    whitelist_file = parser.parse_args().whitelist_file
 
-    analysis_result = analysis.analysis(image_tag)
-    results = analysis.resume(analysis_result)
+    analysis_result = analysis.analysis(image_tag, whitelist_file)
+    results = analysis.summary(analysis_result)
 
     if output_file:
         save_json(results, output_file)
