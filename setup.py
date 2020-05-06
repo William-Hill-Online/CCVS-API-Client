@@ -7,7 +7,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 NAME = 'ccvs-api-client'
-VERSION = '1.2.0.1'
+VERSION = '1.2.0.2'
 
 install_requires = []
 tests_require = []
