@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 import os
+import sys
 from time import sleep
 
 import yaml
@@ -26,11 +27,14 @@ def analysis(image_name, whitelist_file):
     while True:
         analysis_result = analysis_api.analysis_read(analysis_obj.id)
         if analysis_result.result == 'pending':
-            b = 'Analysing image' + '.' * x
-            print(b, end='\r')  # noqa
+            msg = 'Analysing image' + '.' * x
+            print(msg)  # noqa
+            sys.stdout.write('\033[F')
+            sys.stdout.write('\033[K')
             x += 1
             sleep(5)
         else:
+            sys.stdout.write('\033[K')
             print('Image Analyzed')  # noqa
             break
     return analysis_result
@@ -65,6 +69,9 @@ def summary(analysis_result):
 
 
 def read_whitelist_file(whitelist_file):
+
+    if not whitelist_file:
+        return {}
 
     print('Reading whitelist file')  # noqa
     with open(whitelist_file, 'r') as stream:
