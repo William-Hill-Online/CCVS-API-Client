@@ -19,9 +19,11 @@ class Analysis(object):
         'created_at': 'datetime',
         'updated_at': 'datetime',
         'image': 'str',
-        'result': 'str',
         'vendors': 'object',
-        'vulnerabilities': 'object'
+        'errors': 'list',
+        'result': 'str',
+        'ccvs_results': 'object',
+        'whitelist': 'object'
     }
 
     attribute_map = {
@@ -30,13 +32,16 @@ class Analysis(object):
         'created_at': 'created_at',
         'updated_at': 'updated_at',
         'image': 'image',
-        'result': 'result',
         'vendors': 'vendors',
-        'vulnerabilities': 'vulnerabilities'
+        'errors': 'errors',
+        'result': 'result',
+        'ccvs_results': 'ccvs_results',
+        'whitelist': 'whitelist'
     }
 
     def __init__(self, id=None, status=None, created_at=None, updated_at=None,
-                 image=None, result=None, vendors=None, vulnerabilities=None):
+                 image=None, vendors=None, errors=None, result=None,
+                 ccvs_results=None, whitelist=None):
         """Analysis - a model defined in Swagger"""
 
         self._id = None
@@ -44,9 +49,11 @@ class Analysis(object):
         self._created_at = None
         self._updated_at = None
         self._image = None
-        self._result = None
         self._vendors = None
-        self._vulnerabilities = None
+        self._errors = None
+        self._result = None
+        self._ccvs_results = None
+        self._whitelist = None
 
         if id is not None:
             self.id = id
@@ -58,12 +65,16 @@ class Analysis(object):
         if updated_at is not None:
             self.updated_at = updated_at
         self.image = image
-        if result is not None:
-            self.result = result
         if vendors is not None:
             self.vendors = vendors
-        if vulnerabilities is not None:
-            self.vulnerabilities = vulnerabilities
+        if errors is not None:
+            self.errors = errors
+        if result is not None:
+            self.result = result
+        if ccvs_results is not None:
+            self.ccvs_results = ccvs_results
+        if whitelist is not None:
+            self.whitelist = whitelist
 
     @property
     def id(self):
@@ -178,27 +189,6 @@ class Analysis(object):
         self._image = image
 
     @property
-    def result(self):
-        """
-        Gets the result of this Analysis.
-
-        :return: The result of this Analysis.
-        :rtype: str
-        """
-        return self._result
-
-    @result.setter
-    def result(self, result):
-        """
-        Gets the result of this Analysis.
-
-        :return: The result of this Analysis.
-        :rtype: str
-        """
-
-        self._result = result
-
-    @property
     def vendors(self):
         """
         Gets the vendors of this Analysis.
@@ -220,25 +210,88 @@ class Analysis(object):
         self._vendors = vendors
 
     @property
-    def vulnerabilities(self):
+    def errors(self):
         """
-        Gets the vulnerabilities of this Analysis.
+        Gets the errors of this Analysis.
 
-        :return: The vulnerabilities of this Analysis.
+        :return: The errors of this Analysis.
+        :rtype: list
+        """
+        return self._errors
+
+    @errors.setter
+    def errors(self, errors):
+        """
+        Gets the errors of this Analysis.
+
+        :return: The errors of this Analysis.
+        :rtype: list
+        """
+
+        self._errors = errors
+
+    @property
+    def result(self):
+        """
+        Gets the result of this Analysis.
+
+        :return: The result of this Analysis.
+        :rtype: str
+        """
+        return self._result
+
+    @result.setter
+    def result(self, result):
+        """
+        Gets the result of this Analysis.
+
+        :return: The result of this Analysis.
+        :rtype: str
+        """
+
+        self._result = result
+
+    @property
+    def ccvs_results(self):
+        """
+        Gets the ccvs_results of this Analysis.
+
+        :return: The ccvs_results of this Analysis.
         :rtype: object
         """
-        return self._vulnerabilities
+        return self._ccvs_results
 
-    @vulnerabilities.setter
-    def vulnerabilities(self, vulnerabilities):
+    @ccvs_results.setter
+    def ccvs_results(self, ccvs_results):
         """
-        Gets the vulnerabilities of this Analysis.
+        Gets the ccvs_results of this Analysis.
 
-        :return: The vulnerabilities of this Analysis.
+        :return: The ccvs_results of this Analysis.
         :rtype: object
         """
 
-        self._vulnerabilities = vulnerabilities
+        self._ccvs_results = ccvs_results
+
+    @property
+    def whitelist(self):
+        """
+        Gets the whitelist of this Analysis.
+
+        :return: The whitelist of this Analysis.
+        :rtype: object
+        """
+        return self._whitelist
+
+    @whitelist.setter
+    def whitelist(self, whitelist):
+        """
+        Gets the whitelist of this Analysis.
+
+        :return: The whitelist of this Analysis.
+        :rtype: object
+        """
+
+        self._whitelist = whitelist
 
     def to_dict(self):
         """Returns the model properties as a dict."""
