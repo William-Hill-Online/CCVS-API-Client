@@ -22,17 +22,22 @@ def analysis(image_name, whitelist_file):
     analysis_obj = analysis_api.analysis_create(
         Analysis(image=image_name, whitelist=whitelist)
     )
-    x = 0
     print('Analysis: ', analysis_obj.id)  # noqa
+    return get_analysis_result(analysis_obj.id)
+
+
+def get_analysis_result(analysis_id):
+    analysis_api = AnalysisApi(ApiClient(config))
+    x = 0
     while True:
-        analysis_result = analysis_api.analysis_read(analysis_obj.id)
+        analysis_result = analysis_api.analysis_read(analysis)
         if analysis_result.result == 'pending':
             msg = 'Analysing image' + '.' * x
             print(msg)  # noqa
             sys.stdout.write('\033[F')
             sys.stdout.write('\033[K')
-            x += 1
             sleep(5)
+            x += 1
         else:
             sys.stdout.write('\033[K')
             print('Image Analyzed')  # noqa
