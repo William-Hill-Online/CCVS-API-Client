@@ -13,6 +13,10 @@ from ccvs_scanning_api_client.configuration import Configuration
 from ccvs_scanning_api_client.models.analysis import Analysis
 
 
+CCVS_API = os.environ.get('CCVS_API')
+if not CCVS_API:
+    print('EnvVar `CCVS_API` not setted.')  # noqa
+    exit(1)
 config = Configuration(host=os.environ.get('CCVS_API'))
 
 
