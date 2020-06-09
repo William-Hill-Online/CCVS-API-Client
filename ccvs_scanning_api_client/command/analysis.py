@@ -34,7 +34,7 @@ def get_analysis_result(analysis_id):
     analysis_api = AnalysisApi(ApiClient(config))
     x = 0
     while True:
-        analysis_result = analysis_api.analysis_read(analysis)
+        analysis_result = analysis_api.analysis_read(analysis_id)
         if analysis_result.result == 'pending':
             msg = 'Analysing image' + '.' * x
             print(msg)  # noqa
