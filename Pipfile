@@ -15,7 +15,7 @@ rednose = "*"
 unittest2 = "*"
 
 [packages]
-requests = "==2.24.0"
+requests = "==2.25.1"
 six = "==1.15.0"
 PyYAML = "==5.3.1"
 
